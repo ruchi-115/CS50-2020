@@ -1,0 +1,32 @@
+from cs50 import get_string
+
+# prompt for text with a string
+text = get_string("TEXT:")
+
+# set the counter for word, letters, sentences
+count_letters = count_sentences = 0
+count_words = 1
+
+for char in text:
+    # condition for increment in counter
+    if char.isalpha():
+        count_letters += 1
+    if char.isspace():
+        count_words += 1
+    if char in ['.', '?', '!']:
+        count_sentences += 1
+
+# number of letters or sentences per 100 word count
+L = count_letters * 100.00 / count_words
+S = count_sentences * 100.00 / count_words
+
+# coleman formula and rounding off
+grade = int((0.0588 * L - 0.296 * S - 15.8) + 0.5)
+
+if grade < 16 and grade > 0:
+    print(f"Grade {grade}")
+# condition for above or below grade range
+elif grade > 16:
+    print('Grade 16+')
+else:
+    print('Before Grade 1')

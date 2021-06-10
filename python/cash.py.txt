@@ -1,0 +1,13 @@
+from cs50 import get_float
+
+while True:
+    cents = get_float("change owed:")
+    if cents >= 0:
+        break
+c = round(cents * 100.00)
+
+total = 0
+for coin in [25, 10, 5, 1]:
+    total += c // coin
+    c %= coin
+print(total)

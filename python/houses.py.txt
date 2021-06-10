@@ -1,0 +1,23 @@
+# write a program that imports data from a CSV spreadsheet
+import cs50
+from sys import argv
+import csv
+# valid condition for command line argument
+if len(argv) != 2:
+    print("usage: import.py (name of csv file)")
+    exit(1)
+
+db = cs50.SQL("sqlite:///students.db")
+with open(argv[-1], "r") as characters:
+
+    # create reader
+    reader = csv.DictReader(characters)
+    # Iterate of row
+    for row in reader:
+        cur_name = row['name'].split()
+        first, middle, last = cur_name[0], cur_name[1] if len(cur_name) == 3 else None, cur_name[-1]
+        house = row['house']
+        birth = row['birth']
+
+        # insert show
+        db.execute("INSERT INTO students(first, middle, last, house, birth) VALUES(?, ?, ?, ?, ?)", first, middle, last, house, birth)

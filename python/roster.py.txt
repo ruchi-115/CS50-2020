@@ -1,0 +1,13 @@
+# write a program that prints a list of students for a given house in alphabetical order.
+import cs50
+from sys import argv
+# valid command line argument condition.
+if len(argv) != 2:
+    print("usage: import.py (name of csv file)")
+    exit(1)
+
+db = cs50.SQL("sqlite:///students.db")
+rows = db.execute(' SELECT * FROM students WHERE house = ? ORDER BY last, first', argv[-1])
+# order of columns of table to be printed.
+for row in rows:
+    print(row['first'] + ' ' + (row['middle'] + ' ' if row['middle'] else '') + row['last'] + ', born' + ' ' + str(row['birth']))

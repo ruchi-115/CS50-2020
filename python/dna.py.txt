@@ -1,0 +1,69 @@
+from sys import argv
+from csv import reader, DictReader
+
+# check for valid command line
+if len(argv) != 3:
+    print('Usage: python dna.py data.csv sequence.txt')
+    exit()
+
+# open csv and read the dna sequence
+with open(argv[2]) as DNAfile:
+    DNAreader = reader(DNAfile)
+    for row in DNAreader:
+        DNAlist = row
+
+# for storage of string
+DNA = DNAlist[0]
+# create a dictionary
+sequences = {}
+
+# extraction of sequences
+with open(argv[1]) as peoplefile:
+    people = reader(peoplefile)
+    for row in people:
+        DNAsequences = row
+        DNAsequences.pop(0)
+        break
+
+# copy this list into dicionary
+for item in DNAsequences:
+    sequences[item] = 1
+
+# count the sequence
+for key in sequences:
+    l = len(key)
+    tempMax = 0
+    temp = 0
+    for i in range(len(DNA)):
+        # to avoid counting again
+        while temp > 0:
+            temp -= 1
+            continue
+# if the segment of dna corresponds to the key &&
+# there is a repetition of it
+# increment counter
+        if DNA[i: i + l] == key:
+            while DNA[i - l: i] == DNA[i: i + l]:
+                temp += 1
+                i += l
+# compare and find  max. corresponding sequence
+            if temp > tempMax:
+                tempMax = temp
+# store the longest corresponding sequence using key
+    sequences[key] += tempMax
+
+# for comparison with database sequences
+with open(argv[1], newline='') as peoplefile:
+    people = DictReader(peoplefile)
+    for person in people:
+        match = 0
+        # compares the sequences to every person and prints name
+        # leave the program if there is a match
+        for DNA in sequences:
+            if sequences[DNA] == int(person[DNA]):
+                match += 1
+            if match == len(sequences):
+                print(person['name'])
+                exit()
+    # otherwise no match
+    print("no match")
