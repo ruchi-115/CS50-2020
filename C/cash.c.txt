@@ -1,0 +1,44 @@
+#include <cs50.h>
+#include <math.h>
+
+float cents;
+int c;
+int coins = 0;
+
+
+int main(void)
+{
+    // ask for change of which amount
+    do
+    {
+        cents = get_float("change:");
+    }
+    while (cents < 0); // to get change in cents not dollars
+
+
+    c = round(cents * 100.00); //round off till second decimal only
+
+    while (c >= 25)
+    {
+        c -= 25;    //for change greater than 25 cents
+        coins++;
+    }
+    while (c >= 10)
+    {
+        c -= 10;   //for change greater than 10 cents
+        coins++;
+    }
+    while (c >= 5)
+    {
+        c -= 5;   //for change greater than 5 cents
+        coins++;
+    }
+    while (c >= 1)
+    {
+        c -= 1;  //for change greater than 1 cents
+        coins++;
+    }
+
+    printf("%i\n", coins);  // number of coins needed
+
+}

@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[])
+{
+    // for invalid command line argument
+    if (argc != 2)
+    {
+        printf("Usage: ./recover image\n");
+        return 1;
+    }
+
+    FILE *file = fopen(argv[1], "r"); // open the file
+    if (file == NULL)
+    {
+        printf("not a file\n");
+        return 1;
+    }
+
+    unsigned char buffer[512]; //set 512 bytes character buffer
+    int jpg_found = 0; //set jpg count
+    int file_count = 0; // set file count
+
+    FILE *img = NULL; // definr file or images
+
+    char filename[8]; // 000.jpg/0 total 8
+
+    // read file
+    while (fread(buffer, 512, 1, file))
+    {
+        //check for jpg with 1st four byte by using this type
+        if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0)
+        {
+            if (jpg_found == 1) // close prior file
+            {
+                fclose(img);
+            }
+            else // if not then you found a jpg
+            {
+                jpg_found = 1;
+            }
+
+            sprintf(filename, "%03i.jpg", file_count); // to print filename and increment each time
+
+            // open a image file to write
+            img = fopen(filename, "w");
+            file_count++; // each time fle count increment
+        }
+
+        if (jpg_found == 1)
+        {
+            fwrite(&buffer, 512, 1, img);
+        }
+    }
+    fclose(file);
+    fclose(img);
+
+
+}
