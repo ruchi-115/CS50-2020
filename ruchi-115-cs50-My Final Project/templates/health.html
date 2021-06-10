@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    HEALTH
+{% endblock %}
+
+{% block main %}
+<div class="row" style="border:8px solid #537fbe;" >
+  <div class="column">
+    <img src="/static/health1.jpg" alt="a" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="/static/pic2.jpg" alt="b" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="/static/health 3.jpg" alt="c" style="width:100%">
+  </div>
+</div>
+ <div class="tab" >
+  <button class="tablinks" onclick="openCity(event, 'fruits')" id="defaultOpen">FRUITS</button><script src="/static/tab.js"></script>
+  <button class="tablinks" onclick="openCity(event, 'vegetable')">VEGETABLES</button>
+  <button class="tablinks" onclick="openCity(event, 'meats')">MEATS</button>
+   <button class="tablinks" onclick="openCity(event, 'drinks')">DRINKS</button>
+</div>
+  <div id="fruits" class="tabcontent" >
+    <h4>FRUITS</h4>
+    <p>Fresh, frozen, or canned fruits are great choices. Try fruits beyond apples and bananas such as mango, pineapple or kiwi fruit. When fresh fruit is not in season, try a frozen, canned, or dried variety. Be aware that dried and canned fruit may contain added sugars or syrups. Choose canned varieties of fruit packed in water or in its own juice.</p>
+  </div>
+  <div id="vegetable" class="tabcontent" >
+    <h4>VEGETABLES</h4>
+    <p>Add variety to grilled or steamed vegetables with an herb such as rosemary. You can also sauté (panfry) vegetables in a non-stick pan with a small amount of cooking spray. Or try frozen or canned vegetables for a quick side dish—just microwave and serve. Look for canned vegetables without added salt, butter, or cream sauces. For variety, try a new vegetable each week.</p>
+  </div>
+  <div id="meats" class="tabcontent" >
+    <h4>MEATS</h4>
+    <p>If your favorite recipe calls for frying fish or breaded chicken, try healthier variations by baking or grilling. Maybe even try dry beans in place of meats. Ask friends and search the internet and magazines for recipes with fewer calories ― you might be surprised to find you have a new favorite dish!</p>
+  </div>
+  <div id="drinks" class="tabcontent">
+    <h4>DRINKS</h4>
+    <p>We all know that when we work out, it's important to stay hydrated. Something we may not be so clear on is what exactly we should drink when we exercise.
+
+Ordinary water, of course, is the classic choice. But with store shelves everywhere full of sports drinks, energy drinks, and various flavored and fortified waters, what's an exerciser to do?
+
+Experts say it all depends on your taste -- as well as the length and intensity of your workouts. Here's a look at how the various drinks measure up.
+</p>
+
+<p class="bordered">Flavored or Unflavored?
+When I'm really thirsty, the only thing that hits the spot is good old H2O -- preferably cold. But that's just me.
+
+Are you someone who will drink more if your drink is flavored (and there are plenty of you out there)? Then you're better off drinking whatever ends up helping you drink more when you exercise. The bottom line is hydration.
+
+The American College of Sports Medicine recommends flavored drinks when fluid replacement is needed during and after exercise to enhance palatability and promote fluid replacement.
+
+And how do you know when fluid replacement is really needed?</p>
+
+<p class="bordered">"Exercising 1.5 hours to three hours is long enough to warrant fluid replacement due to sweat losses," says Kristine Clark, Ph., FACSM, director of sports nutrition for Penn State University Park. "How much sweat is lost influences how much sodium and potassium are lost."
+
+The longer you exercise and the more heavily you sweat, the greater the need for a sports drink to help replace these lost micronutrients, Clark says.
+
+"A sports drink can do many great things to increase energy levels without the complications of digesting and absorbing a meal," says Clark.
+</p>
+  </div>
+</div>
+
+<div>
+  <div align="left" class="bordered">
+  <h4>Heathy Eating</h4>
+     <p>An eating plan that helps manage your weight includes a variety of healthy foods. Add an array of colors to your plate and think of it as eating the rainbow. Dark, leafy greens, oranges, and tomatoes—even fresh herbs—are loaded with vitamins, fiber, and minerals. Adding frozen peppers, broccoli, or onions to stews and omelets gives them a quick and convenient boost of color and nutrients.
+        According to the Dietary Guidelines for Americans 2015–2020external icon, a healthy eating plan:</p>
+        <li>Emphasizes fruits, vegetables, whole grains, and fat-free or low-fat milk and milk products</li>
+        <li>Includes lean meats, poultry, fish, beans, eggs, and nuts</li>
+        <li>Is low in saturated fats, trans fats, cholesterol, salt (sodium), and added sugars</li>
+        <li>Stays within your daily calorie needs.</li>
+
+  <div class="bordered">
+  <h4>Sports Drinks and Exercise</h4>
+    <p>Basically, a sports drink offers your body three things it might need before, during, or after vigorous exercise:</p>
+    <li>Hydration. The American College of Sports Medicine recommends that people drink about 17 ounces of fluid about two hours before exercise, to promote adequate hydration and allow time for the body to excrete any excess water. During exercise, they recommend that athletes start drinking early and at regular intervals in order to take in fluids at the rate they're losing them through sweating.</li>
+    <li>Fuel. The carbohydrates found in sweetened sports drinks provide energy to help delay fatigue, Clark says. The Gatorade Co. says lab tests have shown that 6% carbohydrate (14 grams of carbohydrate per 8 ounces of water) is the optimal percentage of carbs for speeding fluid and energy back into the body.</li>
+    <li>Electrolytes or Minerals. These are things like sodium, potassium, and chloride that athletes lose through sweat. When water goes out of the body, so do electrolytes. And when the body is losing lots of water (as during exercise), it makes sense that you need to replace electrolytes.</li>
+  </div>
+  <iframe width="560" height="315" align="left"src="https://www.youtube.com/embed/-RIuCaxfN0M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ></iframe>
+  </div>
+
+
+<style src="/static/styles.css"></style>
+
+<script src="/static/tab.js"></script>
+
+{% endblock %}
